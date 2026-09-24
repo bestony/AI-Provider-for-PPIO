@@ -52,6 +52,10 @@ foreach (
 check(!PpioModelCatalog::supportsImageInput('deepseek/deepseek-v4-flash'), 'the default model is text-only');
 check(PpioModelCatalog::supportsFunctionCalling('deepseek/deepseek-v4-flash'), 'the default model supports tools');
 check(PpioModelCatalog::supportsStructuredOutput('deepseek/deepseek-v4-flash'), 'the default model supports JSON schema');
+check(PpioModelCatalog::supportsFunctionCalling('zai-org/glm-4.5v'), 'catalogued GLM vision models support tools');
+check(PpioModelCatalog::supportsStructuredOutput('zai-org/glm-4.5v') === false, 'GLM 4.5 vision is not over-declared for JSON schema');
+check(PpioModelCatalog::supportsImageInput('qwen/qwen3-omni-30b-a3b'), 'Qwen Omni models accept images');
+check(PpioModelCatalog::supportsImageInput('qwen/qwen3-235b-a22b') === false, 'text-only Qwen models stay text-only');
 check(!PpioModelCatalog::supportsFunctionCalling('vendor/future-chat'), 'unknown models do not gain tool support');
 check(!PpioModelCatalog::supportsStructuredOutput('vendor/future-chat'), 'unknown models do not gain schema support');
 foreach (['qwen/qwen3-embedding-8b', 'baai/bge-reranker-v2-m3', 'glm-asr-2512', 'fish/tts-1', 'vendor/video-v1'] as $modelId) {
@@ -153,6 +157,8 @@ function use_ppio_sdk_checks(): void
                 ['id' => 'deepseek/deepseek-v4-flash', 'title' => 'DeepSeek V4 Flash'],
                 ['id' => 'deepseek/deepseek-v4-flash-vision-exp', 'title' => 'V4 Flash Vision'],
                 ['id' => 'deepseek/deepseek-v3'],
+                ['id' => 'deepseek/deepseek-r1-turbo'],
+                ['id' => 'deepseek/deepseek-v3.2-exp'],
                 ['id' => 'qwen/qwen3.8-flash'],
                 ['id' => 'qwen/qwen3-embedding-8b', 'title' => 'Qwen Embedding'],
                 ['id' => 'baai/bge-reranker-v2-m3'],
@@ -178,7 +184,7 @@ function use_ppio_sdk_checks(): void
     check($discoveryRequest->getUri() === 'https://api.ppio.com/openai/v1/models', 'model discovery uses the /models URL');
     check(($discoveryRequest->getHeaders()['User-Agent'][0] ?? null) === PpioConfig::getUserAgent(), 'model discovery identifies the plugin');
     $models = $parser->parse($response);
-    check(count($models) === 7, 'model-list parsing preserves valid chat and non-chat entries');
+    check(count($models) === 9, 'model-list parsing preserves valid chat and non-chat entries');
 
     $byId = [];
     foreach ($models as $model) {
@@ -307,6 +313,37 @@ function use_ppio_sdk_checks(): void
     $reasoning->generateTextResult([$message('hello')]);
     check(($transporter->body['separate_reasoning'] ?? null) === true, 'separate reasoning override is sent');
     putenv('PPIO_SEPARATE_REASONING');
+
+    $automaticR1 = new \Ppio\AiProvider\Models\PpioTextGenerationModel($byId['deepseek/deepseek-r1-turbo'], $providerMetadata);
+    $bind($automaticR1, $transporter);
+    $automaticR1->setConfig(\WordPress\AiClient\Providers\Models\DTO\ModelConfig::fromArray([]));
+    $automaticR1->generateTextResult([$message('hello')]);
+    check(($transporter->body['separate_reasoning'] ?? null) === true, 'R1 Turbo receives automatic separate reasoning');
+
+    $automaticThinking = new \Ppio\AiProvider\Models\PpioTextGenerationModel($byId['deepseek/deepseek-v3.2-exp'], $providerMetadata);
+    $bind($automaticThinking, $transporter);
+    $automaticThinking->setConfig(\WordPress\AiClient\Providers\Models\DTO\ModelConfig::fromArray([]));
+    $automaticThinking->generateTextResult([$message('hello')]);
+    check(($transporter->body['enable_thinking'] ?? null) === true, 'V3.2 experimental receives automatic thinking');
+
+    $transporter->queue = [
+        'choices' => [[
+            'message' => [
+                'role' => 'assistant',
+                'content' => null,
+                'tool_calls' => [[
+                    'id' => 'call-1',
+                    'type' => 'function',
+                    'function' => ['name' => 'lookup', 'arguments' => '{"key":"site"}'],
+                ]],
+            ],
+            'finish_reason' => 'tool_calls',
+        ]],
+    ];
+    $toolResult = $chat->generateTextResult([$message('lookup site')]);
+    $toolPart = $toolResult->getCandidates()[0]->getMessage()->getParts()[0] ?? null;
+    check($toolPart !== null && $toolPart->getType()->isFunctionCall(), 'tool calls are parsed by the SDK');
+    check($toolPart !== null && $toolPart->getFunctionCall()->getName() === 'lookup', 'the parsed tool call keeps its function name');
 
     check(\Ppio\AiProvider\Provider\PpioProvider::url('/models') === 'https://api.ppio.com/openai/v1/models', 'model discovery targets /models');
     check(\Ppio\AiProvider\Provider\PpioProvider::url('chat/completions') === 'https://api.ppio.com/openai/v1/chat/completions', 'provider URL joining is stable');

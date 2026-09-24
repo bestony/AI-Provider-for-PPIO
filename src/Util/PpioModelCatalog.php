@@ -17,31 +17,38 @@ final class PpioModelCatalog
 {
     /** @var list<string> */
     private const VISION_PATTERNS = [
+        '#^deepseek/deepseek-v4\.1-flash(?:$|-|_)#i',
         '#^deepseek/deepseek-v4(?:\.1)?-flash-vision(?:$|-|_)#i',
-        '#^qwen/qwen(?:2\.5|3(?:\.8)?)-vl(?:$|-|_)#i',
-        '#^qwen/qwen3\.8-flash(?:$|-|_)#i',
-        '#^moonshotai/kimi-k(?:2\.7-code|3)(?:$|-|_)#i',
+        '#^qwen/qwen(?:2\.5|3(?:\.5|\.6|\.8)?)-vl(?:$|-|_)#i',
+        '#^qwen/qwen3(?:\.5|\.6|\.8)(?:$|-|_)#i',
+        '#^qwen/qwen3-omni(?:$|-|_)#i',
+        '#^moonshotai/kimi-k(?:2\.5|2\.6|2\.7-code|3)(?:$|-|_)#i',
         '#^minimax/minimax-m3(?:$|-|_)#i',
+        '#^xiaomimimo/mimo-v2\.5(?:$|-|_)#i',
         '#^zai-org/glm-5\.3-flash(?:$|-|_)#i',
+        '#^zai-org/glm-4\.[56]v(?:$|-|_)#i',
         '#(^|[/:_-])(vision|visual|multimodal|omni|vl|qvq|llava|pixtral)([/:_-]|$)#i',
     ];
 
     /** @var list<string> */
     private const FUNCTION_CALLING_PATTERNS = [
-        '#^deepseek/deepseek-(?:v3(?:\.2-exp|-0324)?|v4(?:\.1)?(?:-[^/]+)?|r1-turbo)(?:$|-|_)#i',
-        '#^qwen/qwen(?:2\.5|3|3\.8)(?:$|[-./])#i',
-        '#^zai-org/glm-5(?:\.3)?(?:$|-|_)#i',
-        '#^moonshotai/kimi-k(?:2\.7-code|3)(?:$|-|_)#i',
-        '#^minimax/minimax-m3(?:$|-|_)#i',
+        '#^deepseek/deepseek-(?:v3|v4|r1)(?:$|[-_./])#i',
+        '#^qwen/qwen(?:-2\.5|2\.5|3)(?:$|[-_./])#i',
+        '#^zai-org/glm-[45](?:\.[0-9]+)?v?(?:$|-|_)#i',
+        '#^moonshotai/kimi-k(?:2|3)(?:$|-|_)#i',
+        '#^minimax(?:ai)?/minimax-m(?:2|3)(?:$|-|_)#i',
+        '#^xiaomimimo/mimo-v2\.5(?:$|-|_)#i',
+        '#^baidu/ernie-4\.5(?:$|-|_)#i',
     ];
 
     /** @var list<string> */
     private const STRUCTURED_OUTPUT_PATTERNS = [
-        '#^deepseek/deepseek-(?:v3(?:\.2-exp|-0324)?|v4(?:\.1)?(?:-[^/]+)?|r1-turbo)(?:$|-|_)#i',
-        '#^qwen/qwen(?:2\.5|3|3\.8)(?:$|[-./])#i',
-        '#^zai-org/glm-5(?:\.3)?(?:$|-|_)#i',
-        '#^moonshotai/kimi-k(?:2\.7-code|3)(?:$|-|_)#i',
-        '#^minimax/minimax-m3(?:$|-|_)#i',
+        '#^deepseek/deepseek-(?:v3|v4|r1)(?:$|[-_./])#i',
+        '#^qwen/qwen(?:-2\.5|2\.5|3)(?:$|[-_./])#i',
+        '#^zai-org/glm-(?:4\.[67]|5)(?:\.[0-9]+)?v?(?:$|-|_)#i',
+        '#^moonshotai/kimi-k(?:2\.5|2\.6|2\.7-code|3)(?:$|-|_)#i',
+        '#^minimax(?:ai)?/minimax-m(?:2|3)(?:$|-|_)#i',
+        '#^xiaomimimo/mimo-v2\.5(?:$|-|_)#i',
     ];
 
     /** @var list<string> */
