@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title>PPIO</title>
+  <rect width="256" height="256" rx="48" fill="#2874ff"/>
+  <path d="M55 64h73c35 0 58 19 58 49s-23 49-58 49H92v32H55V64Zm37 31v36h34c15 0 24-7 24-18s-9-18-24-18H92Z" fill="#fff"/>
+  <path d="M151 64h25c21 0 36 12 36 31 0 18-15 30-36 30h-25V95h20c5 0 8-1 8-4s-3-4-8-4h-20V64Z" fill="#fff" opacity=".82"/>
+</svg>
