@@ -50,3 +50,4 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: ai-provider-for-ppio
+          ASSETS_DIR: .wordpress-org
