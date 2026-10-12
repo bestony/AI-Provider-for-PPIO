@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Ppio\AiProvider\Util;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 final class PpioModelCatalog
 {
     /** @var list<string> */

@@ -31,22 +31,6 @@ if (!defined('ABSPATH')) {
 require_once __DIR__ . '/src/autoload.php';
 
 /**
- * Loads the plugin's translations.
- *
- * @return void
- */
-function load_textdomain(): void
-{
-    load_plugin_textdomain(
-        'ai-provider-for-ppio',
-        false,
-        dirname(plugin_basename(__FILE__)) . '/languages'
-    );
-}
-
-add_action('init', __NAMESPACE__ . '\\load_textdomain');
-
-/**
  * Registers the provider with the AI Client.
  *
  * Runs on `init` priority 5: WordPress core builds the Connectors entries at priority 10 from

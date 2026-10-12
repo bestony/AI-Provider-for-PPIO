@@ -51,15 +51,20 @@ The automatic reasoning flags are enabled only for the documented models
 `deepseek/deepseek-r1-turbo` and `deepseek/deepseek-v3.2-exp`. The structured JSON Schema request is
 wrapped as `json_schema.name=ppio_response`; `none` removes `response_format` entirely.
 
-== Privacy ==
+== External services ==
+
+This plugin connects to the PPIO API to provide PPIO models to the WordPress AI Client, so sites can
+use PPIO for text and vision features.
 
 Requests go to the configured PPIO base URL. Chat requests can contain prompts, history, tool
 definitions, JSON schemas, and images supplied by the calling plugin. The AI Client sends the PPIO
 API key as a Bearer credential. No request is sent until model discovery or generation is requested.
 
-External service: [PPIO](https://ppio.com/), including its
-[API key documentation](https://ppio.com/docs/support/api-key), [privacy policy](https://ppio.com/privacy),
-and [terms](https://ppio.com/terms).
+This service is provided by PPIO:
+
+* Platform and API key documentation: [https://ppio.com/docs/support/api-key](https://ppio.com/docs/support/api-key)
+* Terms of service: [https://ppio.com/legal/terms-of-service](https://ppio.com/legal/terms-of-service)
+* Privacy policy: [https://ppio.com/legal/privacy-policy](https://ppio.com/legal/privacy-policy)
 
 == Frequently Asked Questions ==
 

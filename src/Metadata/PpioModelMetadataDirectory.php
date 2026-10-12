@@ -10,6 +10,10 @@ declare(strict_types=1);
 
 namespace Ppio\AiProvider\Metadata;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 use WordPress\AiClient\Messages\Enums\ModalityEnum;
 use WordPress\AiClient\Providers\Http\DTO\Request;
 use WordPress\AiClient\Providers\Http\DTO\Response;

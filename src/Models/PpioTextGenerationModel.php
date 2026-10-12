@@ -10,6 +10,10 @@ declare(strict_types=1);
 
 namespace Ppio\AiProvider\Models;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 use WordPress\AiClient\Providers\OpenAiCompatibleImplementation\AbstractOpenAiCompatibleTextGenerationModel;
 use Ppio\AiProvider\Util\PpioConfig;
 

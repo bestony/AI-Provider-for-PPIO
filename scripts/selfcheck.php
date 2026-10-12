@@ -12,7 +12,11 @@
 declare(strict_types=1);
 
 $root = dirname(__DIR__);
+// Dev-only CLI harness: exit on direct web access; define ABSPATH for the plugin files' guards.
 if (!defined('ABSPATH')) {
+    if ('cli' !== PHP_SAPI) {
+        exit; // Exit if accessed directly.
+    }
     define('ABSPATH', $root . '/');
 }
 $GLOBALS['ppio_plugins_dir'] = dirname($root);
@@ -419,10 +423,6 @@ function define_ppio_wp_stubs(): void
     {
         $dir = $GLOBALS['ppio_plugins_dir'] ?? '';
         return is_string($dir) && strpos($file, $dir) === 0 ? ltrim(substr($file, strlen($dir)), '/') : basename($file);
-    }
-    function load_plugin_textdomain(string $domain, bool $deprecated = false, ?string $path = null): bool
-    {
-        return true;
     }
 }
 

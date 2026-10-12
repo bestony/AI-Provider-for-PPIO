@@ -10,6 +10,10 @@ declare(strict_types=1);
 
 namespace Ppio\AiProvider\Models;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 use WordPress\AiClient\Providers\Http\DTO\Request;
 use WordPress\AiClient\Providers\Http\Enums\HttpMethodEnum;
 use Ppio\AiProvider\Provider\PpioProvider;
