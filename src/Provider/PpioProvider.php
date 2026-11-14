@@ -30,7 +30,7 @@ use Ppio\AiProvider\Models\PpioTextGenerationModel;
 use Ppio\AiProvider\Util\PpioConfig;
 
 /**
- * Class for the AI Provider for PPIO.
+ * Class for the Bestony AI Provider for PPIO.
  *
  * PPIO serves an OpenAI-compatible API: `POST /chat/completions` for text and vision and
  * `GET /models` to list models. Both accept `Authorization: Bearer <key>`, which is the SDK's
@@ -79,7 +79,7 @@ class PpioProvider extends AbstractApiProvider
         throw new RuntimeException(
             sprintf(
                 /* translators: %s: model ID. */
-                esc_html__('The model "%s" has no supported capability for PPIO.', 'ai-provider-for-ppio'),
+                esc_html__('The model "%s" has no supported capability for PPIO.', 'bestony-ai-provider-for-ppio'),
                 esc_html($modelMetadata->getId())
             )
         );
@@ -104,7 +104,7 @@ class PpioProvider extends AbstractApiProvider
         if (version_compare(AiClient::VERSION, '1.2.0', '>=')) {
             $description = 'Text and vision models through PPIO.';
             $args[] = function_exists('__')
-                ? __('Text and vision models through PPIO.', 'ai-provider-for-ppio')
+                ? __('Text and vision models through PPIO.', 'bestony-ai-provider-for-ppio')
                 : $description;
         }
 

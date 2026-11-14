@@ -1,4 +1,4 @@
-# AI Provider for PPIO
+# Bestony AI Provider for PPIO
 
 An OpenAI-compatible [PPIO](https://ppio.com/) provider for the [WordPress PHP AI Client](https://github.com/WordPress/php-ai-client).
 It supports PPIO chat completions for text, vision, tools, structured output, and reasoning output.
@@ -11,8 +11,8 @@ It supports PPIO chat completions for text, vision, tools, structured output, an
 
 ## Installation
 
-1. Copy this directory to `/wp-content/plugins/ai-provider-for-ppio/`.
-2. Activate **AI Provider for PPIO**.
+1. Copy this directory to `/wp-content/plugins/bestony-ai-provider-for-ppio/`.
+2. Activate **Bestony AI Provider for PPIO**.
 3. Add the key in **Settings → Connectors** for PPIO. The provider uses the AI Client registry and
    does not read the Connectors option directly.
 

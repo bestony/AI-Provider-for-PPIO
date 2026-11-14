@@ -47,7 +47,7 @@ jobs:
       - name: Build plugin zip
         run: |
           set -euo pipefail
-          slug=ai-provider-for-ppio
+          slug=bestony-ai-provider-for-ppio
           zip="build/$slug-${GITHUB_REF_NAME}.zip"
           mkdir -p build
           # .gitattributes export-ignores scripts/, README.md and the CI files.

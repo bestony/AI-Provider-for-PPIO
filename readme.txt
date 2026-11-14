@@ -1,9 +1,9 @@
-=== AI Provider for PPIO ===
+=== Bestony AI Provider for PPIO ===
 Contributors:      bestony
 Tags:              ai, connector, ppio, artificial-intelligence, vision
 Requires at least: 7.0
 Tested up to:      7.1
-Stable tag:        1.0.0
+Stable tag:        1.0.1
 Requires PHP:      7.4
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -12,7 +12,7 @@ PPIO provider for the WordPress PHP AI Client: text, vision, tools, structured o
 
 == Description ==
 
-AI Provider for PPIO adds [PPIO](https://ppio.com/) as an OpenAI-compatible provider.
+Bestony AI Provider for PPIO adds [PPIO](https://ppio.com/) as an OpenAI-compatible provider.
 
 * Models are discovered from `GET /openai/v1/models`.
 * Text and chat history use `POST /openai/v1/chat/completions`.
@@ -26,7 +26,7 @@ this provider implements only PPIO's model-list and chat-completion endpoints.
 
 == Installation ==
 
-1. Upload the plugin to `/wp-content/plugins/ai-provider-for-ppio/`.
+1. Upload the plugin to `/wp-content/plugins/bestony-ai-provider-for-ppio/`.
 2. Activate it in the Plugins screen.
 3. Open Settings → Connectors, choose PPIO, and add an API key.
 
@@ -84,6 +84,9 @@ No. Those PPIO APIs are outside this provider's chat-completion scope.
 
 == Changelog ==
 
+= 1.0.1 =
+* Rename plugin name and slug to Bestony AI Provider for PPIO.
+
 = 1.0.0 =
 * Initial release for PPIO's OpenAI-compatible model-list and chat-completion APIs.
 * Added text, vision, function calling, structured output, reasoning flags, token usage, and request
@@ -91,6 +94,9 @@ No. Those PPIO APIs are outside this provider's chat-completion scope.
 * Added a static capability catalog with safe text-only fallback for unknown models.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Renamed plugin name and slug to Bestony AI Provider for PPIO.
 
 = 1.0.0 =
 Initial release.

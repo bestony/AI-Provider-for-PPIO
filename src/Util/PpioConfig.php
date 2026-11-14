@@ -22,7 +22,7 @@ use WordPress\AiClient\Providers\Http\DTO\RequestOptions;
  */
 final class PpioConfig
 {
-    public const VERSION = '1.0.0';
+    public const VERSION = '1.0.1';
     public const PROVIDER_ID = 'ppio';
     public const DEFAULT_BASE_URL = 'https://api.ppio.com/openai/v1';
     public const DEFAULT_MODEL = 'deepseek/deepseek-v4-flash';
@@ -179,6 +179,6 @@ final class PpioConfig
 
     public static function getUserAgent(): string
     {
-        return 'ai-provider-for-ppio/' . self::VERSION;
+        return 'bestony-ai-provider-for-ppio/' . self::VERSION;
     }
 }

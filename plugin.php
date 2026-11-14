@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Plugin Name:       AI Provider for PPIO
+ * Plugin Name:       Bestony AI Provider for PPIO
  * Plugin URI:        https://github.com/bestony/ai-provider-for-ppio
  * Description:       PPIO provider for the WordPress AI Client.
  * Requires at least: 7.0
  * Requires PHP:      7.4
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Bestony
  * Author URI:        https://github.com/bestony
  * License:           GPL-2.0-or-later
  * License URI:       https://spdx.org/licenses/GPL-2.0-or-later.html
- * Text Domain:       ai-provider-for-ppio
+ * Text Domain:       bestony-ai-provider-for-ppio
  *
  * @package Ppio\AiProvider
  */

@@ -78,7 +78,7 @@ check(PpioConfig::getDefaultModelId() === 'deepseek/deepseek-v4-flash', 'default
 check(PpioConfig::getStructuredOutputMode() === 'json_schema', 'structured output defaults to json_schema');
 check(PpioConfig::getRequestTimeout() === 120.0, 'default request timeout');
 check(PpioConfig::getConnectTimeout() === 10.0, 'default connect timeout');
-check(PpioConfig::getUserAgent() === 'ai-provider-for-ppio/' . PpioConfig::VERSION, 'user agent includes the plugin version');
+check(PpioConfig::getUserAgent() === 'bestony-ai-provider-for-ppio/' . PpioConfig::VERSION, 'user agent includes the plugin version');
 check(PpioConfig::getSeparateReasoning('deepseek/deepseek-r1-turbo') === true, 'R1 Turbo enables separate reasoning automatically');
 check(PpioConfig::getSeparateReasoning('deepseek/deepseek-v4-flash') === null, 'other models omit separate reasoning automatically');
 check(PpioConfig::getEnableThinking('deepseek/deepseek-v3.2-exp') === true, 'V3.2 experimental enables thinking automatically');
